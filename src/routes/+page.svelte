@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
+	import { currentUser } from '$lib/pocketbase';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
-<Button on:click={() => alert('clicked')}>Click me!</Button>
+{#if $currentUser}
+	<p>
+		Welcome {$currentUser.email}
+	</p>
+{:else}
+	<p>Register or Login to continue</p>
+{/if}

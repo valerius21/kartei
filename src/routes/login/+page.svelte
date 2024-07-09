@@ -1,21 +1,27 @@
 <script>
 	import { applyAction, enhance } from '$app/forms';
+	import { Button } from '$lib/components/ui/button';
+	import { Card } from '$lib/components/ui/card';
+	import { Input } from '$lib/components/ui/input';
 	import { pb } from '$lib/pocketbase';
 </script>
 
-<form
-	method="POST"
-	use:enhance={() => {
-		return async ({ result }) => {
-			pb.authStore.loadFromCookie(document.cookie);
-			await applyAction(result);
-		};
-	}}
->
-	<h1>Login</h1>
-	<div class="flex flex-col gap-4">
-		<input type="email" name="email" placeholder="Email" />
-		<input type="password" name="password" placeholder="Password" />
-		<button type="submit">Login</button>
-	</div>
-</form>
+<Card class="w-full max-w-2xl space-y-6 p-12">
+	<form
+		class="prose w-full"
+		method="POST"
+		use:enhance={() => {
+			return async ({ result }) => {
+				pb.authStore.loadFromCookie(document.cookie);
+				await applyAction(result);
+			};
+		}}
+	>
+		<h1>Login</h1>
+		<div class="flex flex-col gap-4">
+			<Input type="email" name="email" placeholder="Email" />
+			<Input type="password" name="password" placeholder="Password" />
+			<Button type="submit">Login</Button>
+		</div>
+	</form>
+</Card>

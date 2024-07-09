@@ -8,9 +8,11 @@
 <nav
 	class="flex flex-row items-center justify-between bg-primary px-12 py-6 text-primary-foreground"
 >
-	<h1 class="text-2xl font-bold">
-		{PUBLIC_APP_NAME}
-	</h1>
+	<a href="/" class="text-2xl font-bold">
+		<h1 class="text-2xl font-bold">
+			{PUBLIC_APP_NAME}
+		</h1>
+	</a>
 	<ul class="flex flex-row-reverse gap-4">
 		{#if $currentUser}
 			<li>
