@@ -1,7 +1,10 @@
 <script lang="ts">
+	import LangCard from '$lib/components/lang-card.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>
 
-<pre>{JSON.stringify({ data }, null, 2)}</pre>
+{#each data.words as word}
+	<LangCard {word} />
+{/each}
