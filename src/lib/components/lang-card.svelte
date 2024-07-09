@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
+	import { currentCardIndex } from '$lib/index';
 	import type { Word } from '$lib/response-types';
 	import { Button } from './ui/button';
 
@@ -7,6 +8,10 @@
 
 	function toggleSolution() {
 		showSolution = !showSolution;
+	}
+
+	function nextCard() {
+		currentCardIndex.update((i) => i + 1);
 	}
 
 	export let word: Word;
@@ -27,15 +32,11 @@
 	<Card.Footer>
 		<div class="flex w-full flex-row gap-4">
 			{#if showSolution}
-				<Button
-					size="lg"
-					class="w-full bg-green-500 hover:bg-green-500/75"
-					on:click={toggleSolution}>Correct</Button
+				<Button size="lg" class="w-full bg-green-500 hover:bg-green-500/75" on:click={nextCard}
+					>Correct</Button
 				>
 				<Button size="lg" class="w-full" on:click={toggleSolution} variant="ghost">Hide</Button>
-				<Button size="lg" class="w-full" on:click={toggleSolution} variant="destructive"
-					>Wrong</Button
-				>
+				<Button size="lg" class="w-full" on:click={nextCard} variant="destructive">Wrong</Button>
 			{:else}
 				<Button size="lg" class="w-full" on:click={toggleSolution}>Show</Button>
 			{/if}

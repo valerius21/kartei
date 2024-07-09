@@ -14,5 +14,8 @@ export async function load({ params }) {
 		error(404, "Not found");
 	}
 
+	// shuffle the words
+	words.sort(() => Math.random() - 0.5);
+
 	return { words };
 }
