@@ -7,7 +7,8 @@
 </script>
 
 <div
-	class="flex flex-col items-center justify-center gap-6
+	class="flex w-full max-w-xl flex-col items-center
+            justify-center gap-6
             rounded-xl border bg-primary-foreground p-8 shadow-lg
             transition-all duration-200 hover:cursor-pointer hover:shadow-2xl"
 >

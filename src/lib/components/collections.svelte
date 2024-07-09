@@ -4,7 +4,7 @@
 
 <div class="prose">
 	<h1>Collections</h1>
-	<div class="grid grid-cols-2 gap-4">
+	<div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
 		<CollectionCard
 			title="Italian"
 			subtitle="1000 most used words"
