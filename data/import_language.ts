@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import csv from "csv-parser";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import csv from "csv-parser";
 import PocketBase from "pocketbase";
 
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase("http://pocketbase:8090");
 
 async function readCSVFiles() {
 	const directoryPath = __dirname;

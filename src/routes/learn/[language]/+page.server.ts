@@ -1,12 +1,11 @@
-import { pb } from "$lib/pocketbase.js";
 import type { Word } from "$lib/response-types";
 import { error } from "@sveltejs/kit";
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params }) {
+export async function load({ params, locals }) {
 	const language = params.language;
 
-	const words = await pb.collection("words").getFullList<Word>({
+	const words = await locals.pb.collection("words").getFullList<Word>({
 		filter: `language="${language}"`,
 	});
 

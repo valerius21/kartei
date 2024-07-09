@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  kartei:
+    build: .
+    container_name: kartei
+    restart: unless-stopped
+    networks:
+      - kartei-net
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env
+
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    container_name: pocketbase
+    restart: unless-stopped
+    # command:
+    #   - --encryptionEnv #optional
+    #   - ENCRYPTION #optional
+    # environment:
+    #   ENCRYPTION: example #optional
+    ports:
+      - '8090:8090'
+    networks:
+      - kartei-net
+    volumes:
+      - ./backend/pb_data:/pb_data
+      - ./backend/pb_public:/pb_public
+      - ./backend/pb_logs:/pb_logs
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8090/api/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+networks:
+  kartei-net:
